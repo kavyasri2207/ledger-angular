@@ -1,0 +1,100 @@
+<section class="page">
+  <header class="page-head">
+    <p class="eyebrow">02 — Task Board</p>
+    <h1>The Ledger</h1>
+    <button class="btn-primary" (click)="openNewForm()">+ New entry</button>
+  </header>
+
+  <div class="filters">
+    <button
+      class="chip"
+      [class.active]="filter() === 'all'"
+      (click)="setFilter('all')"
+    >
+      All
+    </button>
+    @for (cat of categories; track cat) {
+      <button
+        class="chip"
+        [class.active]="filter() === cat"
+        (click)="setFilter(cat)"
+      >
+        {{ categoryMeta[cat].icon }} {{ categoryMeta[cat].label }}
+      </button>
+    }
+  </div>
+
+  @if (showForm()) {
+    <form class="entry-form" [formGroup]="form" (ngSubmit)="save()">
+      <div class="form-row">
+        <label>
+          <span>Title</span>
+          <input type="text" formControlName="title" placeholder="What needs doing?" />
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label class="grow">
+          <span>Notes</span>
+          <input type="text" formControlName="notes" placeholder="Optional detail" />
+        </label>
+      </div>
+
+      <div class="form-row triple">
+        <label>
+          <span>Category</span>
+          <select formControlName="category">
+            @for (cat of categories; track cat) {
+              <option [value]="cat">{{ categoryMeta[cat].label }}</option>
+            }
+          </select>
+        </label>
+
+        <label>
+          <span>Priority</span>
+          <select formControlName="priority">
+            @for (p of priorities; track p) {
+              <option [value]="p">{{ priorityMeta[p].label }}</option>
+            }
+          </select>
+        </label>
+
+        <label>
+          <span>Due date</span>
+          <input type="date" formControlName="dueDate" />
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-ghost" (click)="cancel()">Cancel</button>
+        <button type="submit" class="btn-primary">{{ editingId() ? 'Save changes' : 'Add to ledger' }}</button>
+      </div>
+    </form>
+  }
+
+  <ul class="ledger-list">
+    @for (task of filtered; track task.id) {
+      <li class="ledger-row" [class.overdue]="task.dueDate < todayForTemplate">
+        <button class="stamp-check" (click)="toggle(task.id)" aria-label="Mark done"></button>
+
+        <div class="ledger-main">
+          <span class="ledger-title">{{ task.title }}</span>
+          @if (task.notes) {
+            <span class="ledger-notes">{{ task.notes }}</span>
+          }
+        </div>
+
+        <span class="ledger-cat">{{ categoryMeta[task.category].icon }} {{ categoryMeta[task.category].label }}</span>
+        <span class="ledger-due">{{ task.dueDate }}</span>
+        <span class="ledger-priority" [attr.data-priority]="task.priority">{{ task.priority }}</span>
+
+        <div class="ledger-actions">
+          <button class="icon-btn" (click)="edit(task)" aria-label="Edit">✎</button>
+          <button class="icon-btn danger" (click)="remove(task.id)" aria-label="Delete">✕</button>
+        </div>
+      </li>
+    } @empty {
+      <li class="empty-row">No open entries here — the page is clear.</li>
+    }
+  </ul>
+</section>

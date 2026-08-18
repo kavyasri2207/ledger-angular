@@ -1,0 +1,217 @@
+.page {
+  padding: 3rem 3.5rem;
+  max-width: 980px;
+}
+
+.page-head {
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-pine);
+  margin: 0 0 0.5rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  margin: 0 0 0.5rem;
+  color: var(--ink-900);
+}
+
+.lede {
+  color: var(--ink-600);
+  font-size: 1rem;
+  max-width: 46ch;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.stamp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.stamp-ring {
+  --pct: 0;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: conic-gradient(var(--accent-pine) calc(var(--pct) * 1%), var(--rule) 0);
+  position: relative;
+}
+
+.stamp-ring::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background: var(--paper-raised);
+  border: 1px dashed var(--accent-pine);
+}
+
+.stamp-value {
+  position: relative;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--ink-900);
+  z-index: 1;
+}
+
+.stamp-label {
+  font-size: 0.8rem;
+  color: var(--ink-600);
+  margin: 0;
+  text-align: center;
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.metric-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--ink-900);
+}
+
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-600);
+}
+
+.metric-card.warn .metric-num {
+  color: var(--accent-sienna);
+}
+
+.metric-card.danger .metric-num {
+  color: #a3311a;
+}
+
+.list-card {
+  padding: 1.75rem 2rem;
+}
+
+.list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.list-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--ink-900);
+}
+
+.link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-pine);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.empty {
+  color: var(--ink-600);
+  font-size: 0.9rem;
+}
+
+.entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.92rem;
+}
+
+.entry:last-child {
+  border-bottom: none;
+}
+
+.entry-title {
+  color: var(--ink-900);
+}
+
+.entry-due {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-600);
+}
+
+.entry-priority {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  color: var(--ink-600);
+}
+
+.entry-priority[data-priority='high'] {
+  color: #a3311a;
+  border-color: #a3311a55;
+}
+
+.entry-priority[data-priority='medium'] {
+  color: var(--accent-sienna);
+  border-color: var(--accent-sienna);
+}
+
+.entry-priority[data-priority='low'] {
+  color: var(--accent-pine);
+  border-color: var(--accent-pine);
+}
+
+@media (max-width: 900px) {
+  .page {
+    padding: 2rem 1.25rem;
+  }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

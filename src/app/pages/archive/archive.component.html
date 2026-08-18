@@ -1,0 +1,28 @@
+<section class="page">
+  <header class="page-head">
+    <p class="eyebrow">03 — Archive</p>
+    <h1>Closed Entries</h1>
+    <p class="lede">Everything stamped and settled. Nothing here can be edited — only revisited.</p>
+  </header>
+
+  <ul class="archive-list">
+    @for (task of completed; track task.id) {
+      <li class="archive-row">
+        <span class="stamp-mark">✔</span>
+        <div class="archive-main">
+          <span class="archive-title">{{ task.title }}</span>
+          <span class="archive-meta">
+            {{ categoryMeta[task.category].icon }} {{ categoryMeta[task.category].label }} · closed
+            {{ task.completedAt ? (task.completedAt | slice: 0:10) : '' }}
+          </span>
+        </div>
+        <div class="archive-actions">
+          <button class="link-btn" (click)="restore(task.id)">Reopen</button>
+          <button class="link-btn danger" (click)="remove(task.id)">Delete</button>
+        </div>
+      </li>
+    } @empty {
+      <li class="empty-row">Nothing archived yet — close out a task on the board first.</li>
+    }
+  </ul>
+</section>

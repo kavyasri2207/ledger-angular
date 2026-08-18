@@ -1,0 +1,53 @@
+<section class="page">
+  <header class="page-head">
+    <p class="eyebrow">{{ today }}</p>
+    <h1>Overview</h1>
+    <p class="lede">A running ledger of what's due, what's done, and what still needs ink.</p>
+  </header>
+
+  <div class="grid">
+    <div class="card stamp-card">
+      <div class="stamp-ring" [style.--pct]="stats().progress">
+        <span class="stamp-value">{{ stats().progress }}%</span>
+      </div>
+      <p class="stamp-label">of tasks closed out</p>
+    </div>
+
+    <div class="card metric-card">
+      <span class="metric-num">{{ stats().total }}</span>
+      <span class="metric-label">total entries</span>
+    </div>
+
+    <div class="card metric-card" [class.warn]="stats().dueToday > 0">
+      <span class="metric-num">{{ stats().dueToday }}</span>
+      <span class="metric-label">due today</span>
+    </div>
+
+    <div class="card metric-card" [class.danger]="stats().overdue > 0">
+      <span class="metric-num">{{ stats().overdue }}</span>
+      <span class="metric-label">overdue</span>
+    </div>
+  </div>
+
+  <div class="card list-card">
+    <div class="list-head">
+      <h2>Next up</h2>
+      <a routerLink="/board" class="link">open the board →</a>
+    </div>
+
+    @if (upcoming.length === 0) {
+      <p class="empty">Nothing on the page. Add an entry from the Task Board.</p>
+    } @else {
+      <ul class="entries">
+        @for (task of upcoming; track task.id) {
+          <li class="entry">
+            <span class="entry-icon">{{ categoryMeta[task.category].icon }}</span>
+            <span class="entry-title">{{ task.title }}</span>
+            <span class="entry-due">{{ task.dueDate }}</span>
+            <span class="entry-priority" [attr.data-priority]="task.priority">{{ task.priority }}</span>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+</section>

@@ -1,0 +1,98 @@
+.page {
+  padding: 3rem 3.5rem;
+  max-width: 900px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-pine);
+  margin: 0 0 0.5rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  margin: 0 0 0.5rem;
+  color: var(--ink-900);
+}
+
+.lede {
+  color: var(--ink-600);
+  max-width: 50ch;
+  margin: 0 0 2rem;
+}
+
+.archive-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--rule);
+}
+
+.archive-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0.25rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.stamp-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-pine);
+  color: var(--paper);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.archive-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.archive-title {
+  color: var(--ink-900);
+  text-decoration: line-through;
+  text-decoration-color: var(--rule);
+}
+
+.archive-meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-600);
+}
+
+.archive-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--accent-pine);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.link-btn.danger {
+  color: #a3311a;
+}
+
+.empty-row {
+  padding: 2rem 0.25rem;
+  color: var(--ink-600);
+  font-size: 0.9rem;
+}
