@@ -1,47 +1,68 @@
-# Ledger — A Student's Day-Book (Angular Task Manager)
+# Ledger
 
-A task/planner app built with Angular 18 (standalone components, signals, reactive forms).
-Styled as a "ledger" / notebook: a stamp-style progress ring, a ruled task board, and an archive
-of closed-out entries.
+<p align="center">
+  <b>A polished Angular task planner styled like a student day-book.</b><br />
+  Track work, view progress at a glance, and archive completed tasks in a clean notebook-inspired interface.
+</p>
 
-## Features
+## Overview
 
-- **Dashboard** — progress ring, quick stats (total / due today / overdue), upcoming tasks
-- **Task Board** — full CRUD (add, edit, complete, delete), category filters, priority tags, due dates
-- **Archive** — log of completed tasks, with reopen/delete
-- Data persists in the browser via `localStorage` (no backend needed)
-- Fully responsive, keyboard-focusable, built with Angular Router (lazy-loaded routes) and
-  Reactive Forms
+Ledger is a task management app built with Angular 18. It combines a visual dashboard, a structured task board, and a completed-task archive so planning feels organized instead of cluttered.
 
-## Tech stack
+## Highlights
+
+- Dashboard with progress overview, quick stats, and upcoming work
+- Task board with create, edit, complete, delete, filters, priorities, and due dates
+- Archive for finished tasks with reopen and delete actions
+- Browser persistence through `localStorage`, so no backend is required
+- Responsive layout built with Angular Router, standalone components, signals, and reactive forms
+
+## Tech Stack
 
 Angular 18 · TypeScript · SCSS · Angular Signals · Reactive Forms · Angular Router
 
-## Run locally
+## Run Locally
 
 ```bash
 npm install
-npm start        # ng serve, http://localhost:4200
+npm start
 ```
 
-## Production build
+Then open `http://localhost:4200` in your browser.
+
+## Build for Production
 
 ```bash
-npm run build     # outputs to dist/taskflow
+npm run build
 ```
 
-## Push to GitHub
+The production output is generated in `dist/taskflow`.
+
+## Project Snapshot
+
+- `Dashboard` for progress and due-date visibility
+- `Board` for active task management
+- `Archive` for completed items
+- `Sidebar` for navigation between sections
+
+## Publish to GitHub
+
+This repository is currently tracking `origin/master`. If you want to keep that branch name, push with:
 
 ```bash
-git init
 git add .
-git commit -m "Ledger: Angular task planner"
+git commit -m "Refine README"
+git push
+```
+
+If you prefer `main`, rename the branch first and then push it:
+
+```bash
 git branch -M main
-git remote add origin https://github.com/<your-username>/<repo-name>.git
 git push -u origin main
 ```
 
-## Deploy (optional, GitHub Pages)
+## Optional GitHub Pages Deploy
 
 ```bash
 npm install -g angular-cli-ghpages
